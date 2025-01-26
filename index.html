@@ -126,7 +126,7 @@
                                     <p><b>...</b></p>
                                 </div>
                             </div>
-                            <input type="range" min="0" max="100" step="5" value="0" class="scrollbar">
+                            <input type="range" min="0" max="85" step="5" value="0" class="scrollbar">
                         </div>
                     </div>
                 </div>
@@ -241,7 +241,8 @@ window.addEventListener('resize', updateDimensions);
 function updateCarousel() {
     if (a <= 0) return;
 
-    const offset = -scrollbar.value * (carousel.scrollWidth - carousel.clientWidth) / a;
+    const maxOffset = carousel.scrollWidth - carousel.offsetWidth;
+    const offset = -(scrollbar.value / b) * maxOffset; // Calcula o deslocamento proporcional
     carousel.style.transform = `translateX(${offset}px)`;
 }
 
@@ -261,6 +262,21 @@ document.querySelector('.carousel-container').addEventListener('wheel', (event) 
 </html>
 
 <style>
+body {
+    margin: 0;
+    overflow-x: hidden; /* Remove rolagem horizontal */
+}
+
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
     .container {
         margin: 0 auto;
         max-width: 100%;
@@ -796,7 +812,6 @@ document.querySelector('.carousel-container').addEventListener('wheel', (event) 
 
         .carousel-container {
             width: 100%;
-            overflow-x: auto;
         }
 
         .carousel .card {
@@ -816,5 +831,14 @@ document.querySelector('.carousel-container').addEventListener('wheel', (event) 
         .text {
             width: 35%;
         }
+            .card {
+        width: 100%; /* Cada card ocupa 100% da largura da tela */
+        margin-right: 0; /* Remove margens entre os cards */
+        height: 450px;
+    }
+
+    .carousel-container {
+        overflow: hidden; /* Garante que apenas um card seja visível */
+    }
 
     }
