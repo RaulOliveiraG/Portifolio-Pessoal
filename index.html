@@ -790,9 +790,15 @@ document.querySelector('.carousel-container').addEventListener('wheel', (event) 
         .text {
             width: 50%;
         }
+        .card {
+            min-width: calc(50% / 1,2);
+        }
     }
 
     @media (max-width: 38rem) {
+        .card {
+            min-width: calc(40% / 1,2);
+        }
         .text {
             width: 45%;
         }
@@ -806,13 +812,21 @@ document.querySelector('.carousel-container').addEventListener('wheel', (event) 
             width: 90%
         }
         .text {
-        width:45%;
+        width:40%;
     }
     }
     @media (max-width: 33rem) {
+        .carousel-container {
+    overflow: hidden;
+    position: relative; /* Garante que o carrossel respeite os limites do contêiner */
+    width: 100%; /* Certifique-se de que não está excedendo a largura */
+}
         .text {
         width:40%;
     }
+    .card {
+            min-width: calc(40% / 1,2);
+        }
     }
 
     @media (max-width: 30rem) {
