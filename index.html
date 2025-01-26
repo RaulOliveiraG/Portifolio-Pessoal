@@ -192,7 +192,27 @@
     </footer>
 
     <script>
-        function scrollToSection(sectionId) {
+let startX;
+let scrollStart;
+
+document.querySelector('.carousel-container').addEventListener('touchstart', (event) => {
+    startX = event.touches[0].clientX;
+    scrollStart = scrollbar.value;
+});
+
+document.querySelector('.carousel-container').addEventListener('touchmove', (event) => {
+    const deltaX = event.touches[0].clientX - startX;
+    const scrollDelta = (deltaX / window.innerWidth) * b; // Ajuste proporcional ao tamanho da tela
+
+    scrollbar.value = Math.min(Math.max(scrollStart - scrollDelta, 0), b);
+    updateCarousel();
+});
+
+
+
+
+
+    function scrollToSection(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -759,7 +779,7 @@ document.querySelector('.carousel-container').addEventListener('wheel', (event) 
         }
     }
 
-    @media (max-width: 45rem) {
+    @media (max-width: 46rem) {
         .text {
             width: 55%;
         }
@@ -774,7 +794,7 @@ document.querySelector('.carousel-container').addEventListener('wheel', (event) 
 
     @media (max-width: 38rem) {
         .text {
-            width: 40%;
+            width: 45%;
         }
     }
 
@@ -785,6 +805,14 @@ document.querySelector('.carousel-container').addEventListener('wheel', (event) 
             grid-gap: 1rem;
             width: 90%
         }
+        .text {
+        width:45%;
+    }
+    }
+    @media (max-width: 33rem) {
+        .text {
+        width:40%;
+    }
     }
 
     @media (max-width: 30rem) {
@@ -823,7 +851,7 @@ document.querySelector('.carousel-container').addEventListener('wheel', (event) 
     }
 }
 
-@media (max-width: 30rem) {
+@media (max-width: 20rem) {
     .text {
         width: 30%;
     }
