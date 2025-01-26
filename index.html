@@ -126,7 +126,7 @@
                                     <p><b>...</b></p>
                                 </div>
                             </div>
-                            <input type="range" min="0" max="85" step="5" value="0" class="scrollbar">
+                            <input type="range" min="0" max="100" step="5" value="0" class="scrollbar">
                         </div>
                     </div>
                 </div>
@@ -226,6 +226,9 @@ function updateDimensions() {
     }else if (larguraRem <= 40 && larguraRem > 30) {
         a = 20;
         b = 35;
+    }else if (larguraRem <= 30 && larguraRem > 20) {
+        a = 10;
+        b = 20;
     } else {
         a = 0;
         b = 0;
@@ -241,8 +244,7 @@ window.addEventListener('resize', updateDimensions);
 function updateCarousel() {
     if (a <= 0) return;
 
-    const maxOffset = carousel.scrollWidth - carousel.offsetWidth;
-    const offset = -(scrollbar.value / b) * maxOffset; // Calcula o deslocamento proporcional
+    const offset = -scrollbar.value * (carousel.scrollWidth - carousel.clientWidth) / a;
     carousel.style.transform = `translateX(${offset}px)`;
 }
 
@@ -262,21 +264,10 @@ document.querySelector('.carousel-container').addEventListener('wheel', (event) 
 </html>
 
 <style>
-body {
-    margin: 0;
-    overflow-x: hidden; /* Remove rolagem horizontal */
-}
 
-.carousel-container {
-    overflow: hidden;
-    position: relative;
-}
-
-.carousel {
-    display: flex;
-    transition: transform 0.3s ease;
-}
-
+    html{
+        overflow-x: hidden;
+    }
     .container {
         margin: 0 auto;
         max-width: 100%;
@@ -797,48 +788,43 @@ body {
     }
 
     @media (max-width: 30rem) {
-        h1 {
-            font-size: 1.8rem;
-        }
-
-        h2 {
-            font-size: 1.2rem;
-        }
-
-        .header-right button {
-            font-size: 0.9rem;
-            padding: 0.5rem;
-        }
-
-        .carousel-container {
-            width: 100%;
-        }
-
-        .carousel .card {
-            min-width: 45%;
-            margin: 0.625rem 0;
-        }
-
-        .contato i {
-            font-size: 1.2rem;
-        }
-
-        .contato p,
-        .contato a {
-            font-size: 0.9rem;
-        }
-
-        .text {
-            width: 35%;
-        }
-            .card {
-        width: 100%; /* Cada card ocupa 100% da largura da tela */
-        margin-right: 0; /* Remove margens entre os cards */
-        height: 450px;
+    h1 {
+        font-size: 1.8rem;
     }
 
-    .carousel-container {
-        overflow: hidden; /* Garante que apenas um card seja visível */
+    h2 {
+        font-size: 1.2rem;
     }
 
+    .header-right button {
+        font-size: 0.9rem;
+        padding: 0.5rem;
     }
+
+    .carousel {
+        flex-wrap: nowrap; /* Garante que os cards fiquem lado a lado */
+    }
+
+    .carousel .card {
+        margin: 0; /* Remove margens laterais */
+    }
+
+    .contato i {
+        font-size: 1.2rem;
+    }
+
+    .contato p,
+    .contato a {
+        font-size: 0.9rem;
+    }
+
+    .text {
+        width: 35%;
+    }
+}
+
+@media (max-width: 30rem) {
+    .text {
+        width: 30%;
+    }
+}
