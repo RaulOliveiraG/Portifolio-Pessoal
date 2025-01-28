@@ -1,0 +1,156 @@
+@media (max-width: 90rem) {
+    .card {
+        height: 400px;
+    }
+}
+
+@media (max-width: 80rem) {
+    .sobre-text {
+        padding-top: 3.125rem;
+        padding-left: 0rem;
+    }
+
+    .sobre-content {
+        margin-right: 0%;
+        margin-left: 0%;
+    }
+
+    .card {
+        height: 420px;
+    }
+
+    .card-5 {
+        height: 420px;
+    }
+
+    .sobre-img {
+        display: none;
+    }
+
+    .sobre-text {
+        padding: 0;
+    }
+
+}
+
+@media (max-width: 75rem) {
+
+    .skills-container {
+        grid-template-columns: repeat(auto-fit, minmax(9.375rem, 1fr));
+    }
+
+}
+
+@media (max-width: 67rem) {
+
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+        width: 90%
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .header-left,
+    .header-right {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-right button {
+        margin: 0.313rem 0;
+    }
+
+    .perfil-section {
+        margin-top: 7.5rem;
+        padding: 0.625rem;
+    }
+
+    .contatos-icons {
+        flex-direction: column;
+        gap: 0.938rem;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+
+}
+
+@media (max-width: 40rem) {
+
+    .card {
+        min-width: calc(50% / 1);
+    }
+}
+
+@media (max-width: 38rem) {
+    .card {
+        min-width: calc(40% / 1);
+    }
+}
+
+@media (max-width: 35rem) {
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(1, 4fr);
+        grid-gap: 1rem;
+        width: 90%
+    }
+
+}
+
+@media (max-width: 35rem) {
+    .carousel-container {
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .card {
+        min-width: 40%;
+        height: 450px;
+    }
+
+    .card-5 {
+        min-width: 40%;
+        height: 450px;
+    }
+}
+
+@media (max-width: 30rem) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .header-right button {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .carousel {
+        flex-wrap: nowrap;
+    }
+
+    .carousel .card {
+        margin: 0;
+    }
+
+    .contato i {
+        font-size: 1.2rem;
+    }
+
+    .contato p,
+    .contato a {
+        font-size: 0.9rem;
+    }
+
+}
