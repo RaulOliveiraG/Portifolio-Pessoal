@@ -1,5 +1,21 @@
-@media (max-width: 90rem) {
+@media (max-width: 120rem) {
     .card {
+        height: 428px;
+    }
+    .card-5{
+        height: 428px;
+    }
+    .sobre-content {
+        margin-right: 0%;
+        margin-left: 0%;
+    }
+}
+
+@media (max-width: 110rem) {
+    .card {
+        height: 400px;
+    }
+    .card-5{
         height: 400px;
     }
 }
@@ -8,19 +24,6 @@
     .sobre-text {
         padding-top: 3.125rem;
         padding-left: 0rem;
-    }
-
-    .sobre-content {
-        margin-right: 0%;
-        margin-left: 0%;
-    }
-
-    .card {
-        height: 420px;
-    }
-
-    .card-5 {
-        height: 420px;
     }
 
     .sobre-img {
@@ -48,6 +51,7 @@
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1rem;
         width: 90%
+    
     }
 
     header {

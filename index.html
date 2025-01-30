@@ -21,7 +21,7 @@
         </div>
         <nav class="header-right">
             <button onclick="scrollToSection('sobre')">Sobre</button>
-            <button onclick="scrollToSection('projetos')">Projetos</button>
+            <button onclick="document.getElementById('scroll').scrollIntoView();">Projetos</button>
             <button onclick="scrollToSection('contatos')">Contatos</button>
         </nav>
     </header>
@@ -38,8 +38,8 @@
                 <img src="imagens/corpo.jpg" alt="Imagem sobre" class="sobre-img" width="400" height="640">
                 <div class="sobre-text">
                     <div class="text">
-                        <h1>Muito prazer! Sou Raul Oliveira Garcia</h1>
-                        <h2>Transformando o Presente em Inovação...</h2>
+                        <h1>Muito prazer!</h1>
+                        <h2 id="scroll">Transformando o Presente em Inovação...</h2>
                         <p>Olá, me chamo Raul, e seguindo a linha de sustentabilidade, e a importância que esse tema
                             está
                             inserido nos últimos dias, com a tendência da tecnologia em progredir nessa direção, eu
@@ -308,7 +308,6 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
-
         <section class="skills-section">
             <h2>Objetivos de Aprendizado</h2>
             <div class="skills-container">
@@ -323,9 +322,10 @@
                     <p>Explorando algoritmos e ferramentas para criar sistemas inteligentes e inovadores.</p>
                 </div>
                 <div class="skill-card">
-                    <i class="fas fa-camera"></i>
-                    <h3>Fotografia</h3>
-                    <p>Aperfeiçoando técnicas de edição e captura para eventos e estúdio.</p>
+                    <i class="fas fa-database"></i>
+                    <h3>Banco de Dados</h3>
+                    <p>Desenvolvendo e gerenciando estruturas de dados robustas para armazenar e processar informações
+                        de forma eficiente.</p>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-project-diagram"></i>
@@ -366,79 +366,30 @@
 
     <script>
 
-        let startX;
-        let scrollStart;
+    document.querySelector('.carousel-container').addEventListener('wheel', (event) => {
+        event.preventDefault();
+        event.currentTarget.scrollLeft += event.deltaY;
+    });
 
-        document.querySelector('.carousel-container').addEventListener('touchstart', (event) => {
-            startX = event.touches[0].clientX;
-            scrollStart = scrollbar.value;
-        });
-
-        document.querySelector('.carousel-container').addEventListener('touchmove', (event) => {
-            const deltaX = event.touches[0].clientX - startX;
-            const scrollDelta = (deltaX / window.innerWidth) * b;  
-
-            scrollbar.value = Math.min(Math.max(scrollStart - scrollDelta, 0), b);
-            updateCarousel();
-        });
-
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        const carousel = document.querySelector('.carousel');
-        const cards = document.querySelectorAll('.card');
-        const scrollbar = document.querySelector('.scrollbar');
-
-        let a = 70;
-        let b = 85;
-
-        function updateDimensions() {
-            const larguraPx = window.innerWidth;
-            const tamanhoBase = parseFloat(getComputedStyle(document.documentElement).fontSize);
-            const larguraRem = larguraPx / tamanhoBase;
-            scrollbar.max = b;
-            scrollbar.value = Math.min(scrollbar.value, b);
-        }
-
-        updateDimensions();
-        window.addEventListener('resize', updateDimensions);
-
-        function updateCarousel() {
-            if (a <= 0) return;
-
-            const offset = -scrollbar.value * (carousel.scrollWidth - carousel.clientWidth) / a;
-            carousel.style.transform = `translateX(${offset}px)`;
-        }
-
-        scrollbar.addEventListener('input', updateCarousel);
-
-        document.querySelector('.carousel-container').addEventListener('wheel', (event) => {
-            event.preventDefault();
-            const delta = event.deltaY > 0 ? 5 : -5;
-
-            scrollbar.value = Math.min(Math.max(parseFloat(scrollbar.value) + delta, 0), b);
-            updateCarousel();
-        });
 
         function generateMediaQueries() {
             const styles = [];
-            const startWidth = 93;
+            const startWidth = 120;
             const endWidth = 80;
             let width1 = 400;
             let height1 = 640;
             let x = 0;
             let y = 0;
             for (let i = startWidth; i >= endWidth; i--) {
-                const textWidth = 54 - (startWidth - i);
+                const textWidth = 80 - (startWidth - i);
                 const heightimg = x + height1;
                 const widthimg = y + width1;
-                if (i == 93) {
+                if (i <= 120&& i>91) {
                     y = 100;
-                } else if (i == 91) {
-                    x = 20;
-                } else if (i == 86) {
-                    x = 100;
+                }if (i <= 91 && i>87) {
+                    x = 10;
+                } else if (i <= 87) {
+                    x = 30;
                 }
 
                 styles.push(`
@@ -467,14 +418,14 @@
             const startWidth2 = 80;
             const endWidth2 = 30;
             const startTextWidth2 = 70;
-            const endTextWidth2 = 25;
+            const endTextWidth2 = 20;
 
             for (let j = startWidth2; j >= endWidth2; j--) {
                 const textWidth2 = ((j - endWidth2) / (startWidth2 - endWidth2)) * (startTextWidth2 - endTextWidth2) + endTextWidth2;
                 styles2.push(`
             @media (max-width: ${j}rem) {
                 .text {
-                    width: ${textWidth2}rem;
+                    width: ${textWidth2 - 1}rem;
                     margin-left: auto;
                     margin-right: auto;
                 }
@@ -489,7 +440,7 @@
             }
             return styles2.join("\n");
         }
-        
+
         function appendStylesToCSS() {
             const styleElement = document.createElement("style");
             styleElement.textContent = generateMediaQueries() + "\n" + generateMediaQueries2();
