@@ -40,13 +40,12 @@
                     <div class="text">
                         <h1>Muito prazer!</h1>
                         <h2 id="scroll">Transformando o Presente em Inovação...</h2>
-                        <p>Olá, me chamo Raul, e seguindo a linha de sustentabilidade, e a importância que esse tema
-                            está
-                            inserido nos últimos dias, com a tendência da tecnologia em progredir nessa direção, eu
-                            decidi
-                            fazer parte dessa história e me especializar dentro desta área. Atualmente estudo machine
-                            learning e data science e estou pronto para fazer o possível para
-                            alcançar o meu objetivo.<br><br></p>
+                        <p>Sou estudante do curso Técnico em Informática, com 16 anos, e estou iniciando
+                            minha jornada na programação. Tenho grande interesse em linguagens como
+                            JavaScript e Python, além de buscar conhecimentos em machine learning.
+                            Estou sempre em busca de aprendizado e desenvolvimento, visando
+                            aplicar soluções criativas a problemas reais e colaborar em projetos
+                            inovadores.<br><br></p>
                         <h2><b>A seguir alguns de meus projetos:</b></h2>
                     </div>
                     <section id="projetos" class="projetos-section"></section>
@@ -128,7 +127,6 @@
                                     <p><b>...</b></p>
                                 </div>
                             </div>
-                            <input type="range" min="0" max="100" step="5" value="0" class="scrollbar">
                         </div>
                     </div>
                 </div>
@@ -336,6 +334,8 @@
         </section>
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
+
+
         <section id="contatos" class="contatos-section">
             <h1>Entre em Contato<br></h1>
             <div class="contatos-icons">
@@ -366,10 +366,14 @@
 
     <script>
 
-    document.querySelector('.carousel-container').addEventListener('wheel', (event) => {
-        event.preventDefault();
-        event.currentTarget.scrollLeft += event.deltaY;
-    });
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView();
+        }
+
+        document.querySelector('.carousel-container').addEventListener('wheel', (event) => {
+            event.preventDefault();
+            event.currentTarget.scrollLeft += event.deltaY;
+        });
 
 
         function generateMediaQueries() {
@@ -384,9 +388,9 @@
                 const textWidth = 80 - (startWidth - i);
                 const heightimg = x + height1;
                 const widthimg = y + width1;
-                if (i <= 120&& i>91) {
+                if (i <= 120 && i > 91) {
                     y = 100;
-                }if (i <= 91 && i>87) {
+                } if (i <= 91 && i > 87) {
                     x = 10;
                 } else if (i <= 87) {
                     x = 30;
