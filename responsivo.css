@@ -263,7 +263,6 @@
     }
 
     .card-5 {
-        min-width: 40%;
         height: 450px;
     }
 }
@@ -286,10 +285,6 @@
         flex-wrap: nowrap;
     }
 
-    .carousel .card {
-        margin: 0;
-    }
-
     .contato i {
         font-size: 1.2rem;
     }
@@ -299,14 +294,4 @@
         font-size: 0.9rem;
     }
 
-}
-
-@media (max-width: 20rem) {
-    .text {
-        width: 13rem;
-
-    }
-   .carousel-container {
-   width: 13rem;
-        }
 }
